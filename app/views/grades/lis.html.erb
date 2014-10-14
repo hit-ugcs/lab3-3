@@ -1,2 +1,48 @@
-<h1>HHHHH</h1>
-<%=  @i %>
+<h1>Grading Worksheet</h1>
+
+<table>
+  	<tr>
+    		<th>Student ID</th>
+    		<th>Student Name (Chinese)</th>
+   		<th>Nick Name (English)</th>
+   		<th>Project (40%)</th>
+   		<th>Final (40%)</th>
+    		<th>Lab (10%)</th>
+    		<th>Class (10%)</th>
+    		<th>Sum</th>
+    		<th></th>
+    		<th></th>
+    		<th></th>
+  	</tr>
+<% i = 0 %>
+<div>
+<% @grades.each do |grade| %>
+	<% if i < 10 %>
+  	<tr>
+   		<td><%= grade.num %></td>
+   		<td><%= grade.name %></td>
+   		<td><%= grade.nick %></td>
+   		<td><%= grade.pro %></td>
+   		<td><%= grade.exam %></td>
+   		<td><%= grade.lab %></td>
+    		<td><%= grade.disc %></td>
+    		<td><%= grade.pro+grade.lab+grade.exam+grade.disc %>
+    		<td><%= link_to 'Show', grade %></td>
+   		<td><%= link_to 'Edit', edit_grade_path(grade) %></td>
+   		<td><%= link_to 'Delete', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+ 	</tr>
+ 	<% i = i+1 %>
+ 	<% end %>
+ </div>
+<% end %>
+</table>
+<br />
+<%= link_to 'New Grade', new_grade_path %>
+<br /><br /><br />
+<%  for i in 1..@pageTotal %>
+	<span><%= link_to "#{i}", :controller => "grades", :action =>"lis", :id =>i %>
+	</span>
+<% end %>
+<br /><br />
+<%= link_to 'View all grades in one page',  grades_path %>
+

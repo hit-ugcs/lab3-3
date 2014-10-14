@@ -2,11 +2,8 @@ class GradesController < ApplicationController
   # GET /grades
   # GET /grades.json
   def index
-    @gradestmp = Grade.all
-    @grades = []
-    @gradestmp.each do |grade|
-        @grades << grade
-    end
+    @grades = Grade.all
+    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -86,7 +83,14 @@ class GradesController < ApplicationController
   end
 
   def lis
-    @i = Grade.find(params[:id]).pro
-
+    pagenum = params[:id].to_i-1
+    gradestmp = Grade.all
+    @pageTotal = gradestmp.length/10 +1
+    @grades= []
+    for i in 1..10 do
+      if  pagenum*10 +i <= gradestmp.length 
+      @grades << Grade.find(pagenum*10 +i)
+      end
+   end 
   end
 end

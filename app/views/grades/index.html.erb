@@ -15,10 +15,10 @@
     		<th></th>
     		<th></th>
   	</tr>
-<% i = 0 %>
+
 <div>
 <% @grades.each do |grade| %>
-	<% if i < 10 %>
+	
   	<tr>
    		<td><%= grade.num %></td>
    		<td><%= grade.name %></td>
@@ -32,25 +32,15 @@
    		<td><%= link_to 'Edit', edit_grade_path(grade) %></td>
    		<td><%= link_to 'Delete', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
  	</tr>
- 	<% i = i+1 %>
- 	<% end %>
+ 	
+ 	
  </div>
 <% end %>
 </table>
 
 <br />
-<%= max = @grades.length  %>
-<%= divs =  max/10 %>
-<% for i in 0..divs %>
-	<div class="page#{i}">
-		<% for j in 0..9 do %>
-			<% if (i*10 +j) < @grades.length %>
-				<%= @grades[i*10 + j].num %>
-			<% end %>
-		<% end %>
-	</div>
-<% end %>
-
 
 
 <%= link_to 'New Grade', new_grade_path %>
+<br /><br />
+<%= link_to 'Back to pages', :controller => "grades", :action =>"lis", :id =>1 %>
