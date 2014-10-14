@@ -84,4 +84,9 @@ class GradesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def lis
+    @i = Grade.find(params[:id]).pro
+
+  end
 end

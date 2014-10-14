@@ -3,20 +3,18 @@
 
 <table>
   	<tr>
-    	<th>Student ID</th>
-    	<th>Student Name (Chinese)</th>
-   	<th>Nick Name (English)</th>
-   	<th>Project (40%)</th>
-   	<th>Final (40%)</th>
-    	<th>Lab (10%)</th>
-    	<th>Class (10%)</th>
-    	<th>Sum</th>
-    	<th></th>
-    	<th></th>
-    	<th></th>
+    		<th>Student ID</th>
+    		<th>Student Name (Chinese)</th>
+   		<th>Nick Name (English)</th>
+   		<th>Project (40%)</th>
+   		<th>Final (40%)</th>
+    		<th>Lab (10%)</th>
+    		<th>Class (10%)</th>
+    		<th>Sum</th>
+    		<th></th>
+    		<th></th>
+    		<th></th>
   	</tr>
-
-
 <% i = 0 %>
 <div>
 <% @grades.each do |grade| %>
@@ -44,7 +42,7 @@
 <%= max = @grades.length  %>
 <%= divs =  max/10 %>
 <% for i in 0..divs %>
-	<div >
+	<div class="page#{i}">
 		<% for j in 0..9 do %>
 			<% if (i*10 +j) < @grades.length %>
 				<%= @grades[i*10 + j].num %>
