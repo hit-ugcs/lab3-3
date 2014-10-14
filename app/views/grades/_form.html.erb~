@@ -1,0 +1,16 @@
+
+<table>
+	<tr>
+		<th>Student ID</th>
+		<th>Name (Chinese)</th>
+		<th>Nick Name</th>
+		<th>Project</th>
+		<th>Lab</th>
+		<th>Final</th>
+		<th>Class Discussion</th>
+	</tr>
+	<% @grades.each do |grade| %>
+		<tr>
+			<td>grade.num</td>
+	<% end % >
+</table>

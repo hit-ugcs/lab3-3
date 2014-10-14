@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Num:</b>
+  <%= @grade.num %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @grade.name %>
+</p>
+
+<p>
+  <b>Nick:</b>
+  <%= @grade.nick %>
+</p>
+
+<p>
+  <b>Pro:</b>
+  <%= @grade.pro %>
+</p>
+
+<p>
+  <b>Lab:</b>
+  <%= @grade.lab %>
+</p>
+
+<p>
+  <b>Exam:</b>
+  <%= @grade.exam %>
+</p>
+
+<p>
+  <b>Disc:</b>
+  <%= @grade.disc %>
+</p>
+
+
+<%= link_to 'Edit', edit_grade_path(@grade) %> |
+<%= link_to 'Back', grades_path %>

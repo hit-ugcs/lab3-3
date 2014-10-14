@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  num: MyString
+  name: MyString
+  nick: MyString
+  pro: 9.99
+  lab: 9.99
+  exam: 9.99
+  disc: 9.99
+
+two:
+  num: MyString
+  name: MyString
+  nick: MyString
+  pro: 9.99
+  lab: 9.99
+  exam: 9.99
+  disc: 9.99
