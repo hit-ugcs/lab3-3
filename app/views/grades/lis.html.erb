@@ -22,11 +22,11 @@
    		<td><%= grade.num %></td>
    		<td><%= grade.name %></td>
    		<td><%= grade.nick %></td>
-   		<td><%= grade.pro %></td>
-   		<td><%= grade.exam %></td>
-   		<td><%= grade.lab %></td>
-    		<td><%= grade.disc %></td>
-    		<td><%= grade.pro+grade.lab+grade.exam+grade.disc %>
+   		<td><%= grade.pro.to_s + "%" %></td>
+   		<td><%= grade.exam.to_s + "%" %></td>
+   		<td><%= grade.lab.to_s + "%"  %></td>
+    		<td><%= grade.disc.to_s + "%"  %></td>
+    		<td><%= (grade.pro+grade.lab+grade.exam+grade.disc).to_s + "%"  %>
     		<td><%= link_to 'Show', grade %></td>
    		<td><%= link_to 'Edit', edit_grade_path(grade) %></td>
    		<td><%= link_to 'Delete', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
