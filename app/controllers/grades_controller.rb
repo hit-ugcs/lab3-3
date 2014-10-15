@@ -77,20 +77,25 @@ class GradesController < ApplicationController
     @grade.destroy
 
     respond_to do |format|
-      format.html { redirect_to grades_url }
+      format.html { redirect_to :action => 'lis', :id=>1 }
       format.json { head :no_content }
     end
   end
 
   def lis
     pagenum = params[:id].to_i-1
-    gradestmp = Grade.all
+    grade = Grade.all
+    gradestmp = []
+    grade.each do |g|
+      gradestmp << g
+    end
     @pageTotal = gradestmp.length/10 +1
     @grades= []
-    for i in 1..10 do
-      if  pagenum*10 +i <= gradestmp.length 
-      @grades << Grade.find(pagenum*10 +i)
+    for i in 0..9 do
+      if  pagenum*10 +i < gradestmp.length 
+      @grades << gradestmp[pagenum*10 +i]
       end
-   end 
+   end
+
   end
 end

@@ -1,4 +1,5 @@
 Lab31::Application.routes.draw do
+  
   resources :grades
   match 'pages/:id' => 'grades#lis'
   root  :to => 'grades#lis', :id =>1

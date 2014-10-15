@@ -14,10 +14,10 @@
     		<th></th>
     		<th></th>
   	</tr>
-<% i = 0 %>
+
 <div>
 <% @grades.each do |grade| %>
-	<% if i < 10 %>
+	
   	<tr>
    		<td><%= grade.num %></td>
    		<td><%= grade.name %></td>
@@ -31,18 +31,33 @@
    		<td><%= link_to 'Edit', edit_grade_path(grade) %></td>
    		<td><%= link_to 'Delete', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
  	</tr>
- 	<% i = i+1 %>
- 	<% end %>
  </div>
 <% end %>
 </table>
 <br />
+
 <%= link_to 'New Grade', new_grade_path %>
-<br /><br /><br />
+<br /><br />
 <%  for i in 1..@pageTotal %>
 	<span><%= link_to "#{i}", :controller => "grades", :action =>"lis", :id =>i %>
 	</span>
 <% end %>
 <br /><br />
+<div style ="float: left ; margin : 0px 100px 10px 0px">
 <%= link_to 'View all grades in one page',  grades_path %>
-
+<br />
+</div>
+<div>
+<script language="javascript">
+function custom_close(){
+if 
+(confirm("Are you sure to close this page？")){
+window.opener=null;
+window.open('','_self');
+window.close();
+}
+else{}
+}
+</script>
+<input id="btnClose" type="button" value="Exit" onClick="custom_close()" />
+</div>
