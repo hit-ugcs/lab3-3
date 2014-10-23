@@ -83,7 +83,7 @@ class GradesController < ApplicationController
   end
 
   def lis
-    pagenum = params[:id].to_i-1
+    @pagenum = params[:id].to_i-1
     grade = Grade.all
     gradestmp = []
     grade.each do |g|
@@ -92,8 +92,8 @@ class GradesController < ApplicationController
     @pageTotal = gradestmp.length/10 +1
     @grades= []
     for i in 0..9 do
-      if  pagenum*10 +i < gradestmp.length 
-      @grades << gradestmp[pagenum*10 +i]
+      if  @pagenum*10 +i < gradestmp.length 
+      @grades << gradestmp[@pagenum*10 +i]
       end
    end
 

@@ -1,4 +1,9 @@
 
+<style>
+@media print{
+  .noprint{display:none;}
+}
+</style>
 <h1>Grading Worksheet</h1>
 
 <table>
@@ -28,9 +33,9 @@
    		<td><%= grade.lab %></td>
     		<td><%= grade.disc %></td>
     		<td><%= grade.pro+grade.lab+grade.exam+grade.disc %></td>
-    		<td><%= link_to 'Show', grade %></td>
-   		<td><%= link_to 'Edit', edit_grade_path(grade) %></td>
-   		<td><%= link_to 'Delete', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    		<td class="noprint"><%= link_to 'Show', grade %></td>
+   		<td class="noprint"><%= link_to 'Edit', edit_grade_path(grade) %></td>
+   		<td class="noprint"><%= link_to 'Delete', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
  	</tr>
  	
  	
@@ -40,9 +45,18 @@
 
 <br />
 
-
+<div class="noprint" style= "float :left">
 <%= link_to 'New Grade', new_grade_path %>
 <br /><br />
 <%= link_to 'Back to pages', :controller => "grades", :action =>"lis", :id =>1 %>
 <br />
 <a href="javascript:window.close()">CLose</a>
+</div>
+<script type="text/javascript">
+  function p(){
+    window.location.href="grades";
+    window.print();
+  }
+</script>   
+
+<button style = "float: left" href="javascript:;" onClick="p()">Print</button>

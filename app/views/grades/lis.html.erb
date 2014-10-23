@@ -1,63 +1,73 @@
+<style>
+@media print{
+  .noprint{display:none;}
+}
+</style>
+
+
+<!--startprint-->
+
 <h1>Grading Worksheet</h1>
 
 <table>
-  	<tr>
-    		<th>Student ID</th>
-    		<th>Student Name (Chinese)</th>
-   		<th>Nick Name (English)</th>
-   		<th>Project (40%)</th>
-   		<th>Final (40%)</th>
-    		<th>Lab (10%)</th>
-    		<th>Class (10%)</th>
-    		<th>Sum</th>
-    		<th></th>
-    		<th></th>
-    		<th></th>
-  	</tr>
-
+    <tr>
+        <th>Student ID</th>
+        <th>Student Name (Chinese)</th>
+        <th>Nick Name (English)</th>
+        <th>Project (40%)</th>
+        <th>Final (40%)</th>
+        <th>Lab (10%)</th>
+        <th>Class (10%)</th>
+        <th>Sum</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
 <div>
 <% @grades.each do |grade| %>
-	
-  	<tr>
-   		<td><%= grade.num %></td>
-   		<td><%= grade.name %></td>
-   		<td><%= grade.nick %></td>
-   		<td><%= grade.pro.to_s + "%" %></td>
-   		<td><%= grade.exam.to_s + "%" %></td>
-   		<td><%= grade.lab.to_s + "%"  %></td>
-    		<td><%= grade.disc.to_s + "%"  %></td>
-    		<td><%= (grade.pro+grade.lab+grade.exam+grade.disc).to_s + "%"  %>
-    		<td><%= link_to 'Show', grade %></td>
-   		<td><%= link_to 'Edit', edit_grade_path(grade) %></td>
-   		<td><%= link_to 'Delete', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
- 	</tr>
- </div>
+    <tr>
+        <td><%= grade.num %></td>
+        <td><%= grade.name %></td>
+        <td><%= grade.nick %></td>
+        <td><%= grade.pro.to_s + "%" %></td>
+        <td><%= grade.exam.to_s + "%" %></td>
+        <td><%= grade.lab.to_s + "%"  %></td>
+        <td><%= grade.disc.to_s + "%"  %></td>
+        <td><%= (grade.pro+grade.lab+grade.exam+grade.disc).to_s + "%"  %>
+        <td class ="noprint"><%= link_to 'Show', grade %></td>
+        <td class ="noprint"><%= link_to 'Edit', edit_grade_path(grade) %></td>
+        <td class ="noprint"><%= link_to 'Delete', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+</div>
 <% end %>
 </table>
 <br />
+<!--endprint-->
+<div class ="noprint">
+<%= link_to 'New Grade', new_grade_path %><br /><br />
 
-<%= link_to 'New Grade', new_grade_path %>
-<br /><br />
 <%  for i in 1..@pageTotal %>
 	<span><%= link_to "#{i}", :controller => "grades", :action =>"lis", :id =>i %>
 	</span>
 <% end %>
 <br /><br />
-<div style ="float: left ; margin : 0px 100px 10px 0px">
-<%= link_to 'View all grades in one page',  grades_path %>
-<br />
+
+<div style ="float: left ; margin : 0px 100px 0px 0px">
+    <%= link_to 'View all grades in one page, and print if you want',  grades_path %><br />
 </div>
+
 <div>
-<script language="javascript">
-function custom_close(){
-if 
-(confirm("Are you sure to close this page？")){
-window.opener=null;
-window.open('','_self');
-window.close();
-}
-else{}
-}
-</script>
+    <script language="javascript">
+        function custom_close(){
+            if (confirm("Are you sure to close this page？")){
+                window.opener=null;
+                window.open('','_self');
+                window.close();
+            }else{}
+    }
+    </script>
 <input id="btnClose" type="button" value="Exit" onClick="custom_close()" />
 </div>
+
+
+</div> 
